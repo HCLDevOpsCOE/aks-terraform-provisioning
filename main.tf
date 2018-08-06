@@ -132,10 +132,6 @@ resource "null_resource" "provision" {
   }
 
   provisioner "local-exec" {
-    command = "helm install -n hclaks stable/jenkins -f values.yaml --version 0.16.18 --wait"
-  }
-
-  provisioner "local-exec" {
     command = "wget -qO- https://azuredraft.blob.core.windows.net/draft/draft-v0.15.0-linux-amd64.tar.gz | tar xvz"
   }
 
@@ -160,6 +156,10 @@ resource "azurerm_storage_account" "aci-sa" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
+
+  provisioner "local-exec" {
+    command = "helm install -n hclaks stable/jenkins -f values.yaml --version 0.16.18 --wait"
+  }
 
 resource "azurerm_storage_share" "aci-share" {
   name = "${var.resource_aci-dev-share}"
