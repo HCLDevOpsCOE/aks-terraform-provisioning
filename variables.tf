@@ -26,6 +26,7 @@ variable "cluster_name" {}
 
 variable "dns_prefix" {}
 variable "azure_container_registry_name" {}
+variable "agent_count" {}
 
 /**
 variable "cluster_name" {
@@ -44,15 +45,16 @@ variable "admin_username" {
   default = "aksadmin"
 }
 
+variable "resource_storage_acct" {
+  default = ""
+}
+
+/**
+
 variable "agent_count" {
   default = "3"
 }
 
-variable "resource_storage_acct" {
-  default = "acisa12345"
-}
-
-/**
 variable "resource_aci-dev-share" {
   default = "aci-dev-share"
 }
